@@ -1,0 +1,32 @@
+{
+  "name": "lintel-contrib-notifications",
+  "version": "0.1.0",
+  "description": "Notifications for lintel.",
+  "homepage": "https://github.com/lintelio/lintel-contrib-notifications",
+  "repository": "https://github.com/lintelio/lintel-contrib-notifications.git",
+  "keywords": [
+    "lintelmodule",
+    "lintel"
+  ],
+  "main": [
+    "sass/notifications.sass",
+    "dist/notifications.min.css",
+    "dist/notifications.min.js"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "lintel": "~0.1.7"
+  },
+  "devDependencies": {},
+  "ignore": [
+    "/.*",
+    "sass/lintel-core-loader.scss"
+  ],
+  "authors": [
+    {
+      "name": "Marius Craciunoiu",
+      "email": "",
+      "url": "mariusc23.com"
+    }
+  ]
+}
