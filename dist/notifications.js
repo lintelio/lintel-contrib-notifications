@@ -1,20 +1,22 @@
 ;(function($) {
   'use strict';
 
+  /* global Notification:false */
+
   var Notifications = function(element, options) {
     this.$notifications = $(element);
     this.options = options || {};
   };
 
   Notifications.prototype.add = function(notification) {
-    var $notification = $(this.options.template).appendTo(this.$notifications);
+    var $notification = $(this.options.template).appendTo(this.$notifications).hide();
 
-    // Get title and message
+    // Get title and body
     $.when(
       this.getOption(notification.title, $notification),
-      this.getOption(notification.message, $notification)
+      this.getOption(notification.body, $notification)
     )
-      .done(function(title, message) {
+      .done(function(title, body) {
         // Show event
         var showEvent = $.Event('show.lt.notification', {
           relatedTarget: $notification
@@ -24,10 +26,45 @@
         // Allow event to be prevented
         if (showEvent.isDefaultPrevented()) { return; }
 
-        // Update notification data and show
+        // Update notification data
         $notification.find('.notification-title').text(title);
-        $notification.find('.notification-message').text(message);
-        $notification.show();
+        $notification.find('.notification-body').text(body);
+
+        // Set state
+        if (notification.state) {
+          $notification.addClass('notification-' + notification.state);
+        }
+
+        // Show notification
+        var isGlobal = this.options.global;
+
+        if (typeof notification.global !== 'undefined') {
+          isGlobal = notification.global;
+        }
+
+        if (isGlobal && 'Notification' in window) {
+          if (Notification.permission === 'granted') {
+            new Notification(notification.title, {
+              body: notification.body
+            });
+          }
+
+          else if (Notification.permission !== 'denied') {
+            Notification.requestPermission(function (permission) {
+              if (!('permission' in Notification)) {
+                Notification.permission = permission;
+              }
+
+              if (permission === 'granted') {
+                new Notification(notification.title, {
+                  body: notification.body
+                });
+              }
+            });
+          }
+        } else {
+          $notification.show();
+        }
 
         // Shown event
         var shownEvent = $.Event('shown.lt.notification', {
@@ -121,11 +158,13 @@
   }
 
   Plugin.defaults = {
-    duration: 30000,
+    duration: 5000,
+    state: null,
+    global: false,
     template: [
       '<div class="notification" data-toggle="notification-close">',
         '<h1 class="notification-title"></h1>',
-        '<p class="notification-message"></p>',
+        '<p class="notification-body"></p>',
         '<button type="button" class="notification-close" data-toggle="notification-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
       '</div>'
     ].join('')

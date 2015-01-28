@@ -2,55 +2,66 @@
 // https://github.com/lintelio/lintel/blob/master/CONTRIBUTING.md
 
 // Global
-$notification-padding-y:         $cushion-y-md !default;
-$notification-padding-x:         $cushion-x-md !default;
+$notification-padding-y:             $cushion-y-md !default;
+$notification-padding-x:             $cushion-x-md !default;
 
-$notification-margin-y:          $cushion-y-lg !default;
+$notification-margin-y:              $cushion-y-lg !default;
 
-$notification-bg:                transparentize($bg-light, 0.1) !default;
-$notification-border:            transparentize($border-base, 0.1) !default;
-$notification-border-radius:     $border-radius-base !default;
-$notification-font-size:         0.9em !default;
-$notification-text:              $text-base !default;
-$notification-text-shadow:       0 1px 1px rgba(0,0,0,.2) !default;
-$notification-width:             280px !default;
-$notification-z-index:           $z-index-3xl !default;
+$notification-bg:                    transparentize($bg-light, 0.1) !default;
+$notification-border:                transparentize($border-base, 0.1) !default;
+$notification-border-radius:         $border-radius-base !default;
+$notification-font-size:             0.9em !default;
+$notification-text:                  $text-base !default;
+$notification-text-shadow:           null !default;
+$notification-width:                 280px !default;
+$notification-z-index:               $z-index-3xl !default;
 
 // Title
-$notification-title-font-size:   1em !default;
-$notification-title-margin-y:    0.33em !default;
+$notification-title-font-size:       1em !default;
+$notification-title-margin-y:        0.33em !default;
 
 // Close
-$notification-close-font-size:   15px !default;
-$notification-close-padding-y:   $notification-padding-y !default;
-$notification-close-padding-x:   $notification-padding-x !default;
+$notification-close-font-size:       15px !default;
+$notification-close-padding-y:       $notification-padding-y !default;
+$notification-close-padding-x:       $notification-padding-x !default;
+
+
+// States
+// ------
+$notification-states-text-shadow:    0 1px 1px rgba(0,0,0,.2) !default;
 
 // Primary
-$notification-primary-bg:        transparentize($state-primary, 0.2) !default;
-$notification-primary-border:    transparentize($state-primary, 0.2) !default;
-$notification-primary-text:      #fff !default;
+$notification-primary-bg:            transparentize($state-primary, 0.2) !default;
+$notification-primary-border:        transparentize($state-primary, 0.2) !default;
+$notification-primary-text:          #fff !default;
+$notification-primary-text-shadow:   $notification-text-shadow !default;
 
 // Secondary
-$notification-secondary-bg:      transparentize($state-secondary, 0.2) !default;
-$notification-secondary-border:  transparentize($state-secondary, 0.2) !default;
-$notification-secondary-text:    #fff !default;
+$notification-secondary-bg:          transparentize($state-secondary, 0.2) !default;
+$notification-secondary-border:      transparentize($state-secondary, 0.2) !default;
+$notification-secondary-text:        #fff !default;
+$notification-secondary-text-shadow: $notification-text-shadow !default;
 
 // Error
-$notification-error-bg:          transparentize($state-error, 0.2) !default;
-$notification-error-border:      transparentize($state-error, 0.2) !default;
-$notification-error-text:        #fff !default;
+$notification-error-bg:              transparentize($state-error, 0.2) !default;
+$notification-error-border:          transparentize($state-error, 0.2) !default;
+$notification-error-text:            #fff !default;
+$notification-error-text-shadow:     $notification-text-shadow !default;
 
 // Warning
-$notification-warning-bg:        transparentize($state-warning, 0.2) !default;
-$notification-warning-border:    transparentize($state-warning, 0.2) !default;
-$notification-warning-text:      #fff !default;
+$notification-warning-bg:            transparentize($state-warning, 0.2) !default;
+$notification-warning-border:        transparentize($state-warning, 0.2) !default;
+$notification-warning-text:          #fff !default;
+$notification-warning-text-shadow:   $notification-text-shadow !default;
 
 // Success
-$notification-success-bg:        transparentize($state-success, 0.2) !default;
-$notification-success-border:    transparentize($state-success, 0.2) !default;
-$notification-success-text:      #fff !default;
+$notification-success-bg:            transparentize($state-success, 0.2) !default;
+$notification-success-border:        transparentize($state-success, 0.2) !default;
+$notification-success-text:          #fff !default;
+$notification-success-text-shadow:   $notification-text-shadow !default;
 
 // Info
-$notification-info-bg:           transparentize($state-info, 0.2) !default;
-$notification-info-border:       transparentize($state-info, 0.2) !default;
-$notification-info-text:         #fff !default;
+$notification-info-bg:               transparentize($state-info, 0.2) !default;
+$notification-info-border:           transparentize($state-info, 0.2) !default;
+$notification-info-text:             #fff !default;
+$notification-info-text-shadow:      $notification-text-shadow !default;

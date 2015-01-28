@@ -10,7 +10,11 @@
 
     <button type="button" id="simple">Simple</button>
 
+    <button type="button" id="success">Success</button>
+
     <button type="button" id="deferred">Deferred</button>
+
+    <button type="button" id="global">Global</button>
 
     <div class="notifications"></div>
 
@@ -18,29 +22,45 @@
       $('#simple').click(function() {
         $('.notifications').notifications('add', {
           title: 'Title',
-          message: 'Whatever'
+          body: 'Whatever'
+        });
+      });
+
+      $('#success').click(function() {
+        $('.notifications').notifications('add', {
+          title: 'Title',
+          body: 'Whatever',
+          state: 'success'
         });
       });
 
       $('#deferred').click(function() {
         var deferredTitle = $.Deferred();
-        var deferredMessage = $.Deferred();
+        var deferredBody = $.Deferred();
         var deferredDuration = $.Deferred();
 
         $('.notifications').notifications('add', {
           title: deferredTitle.promise,
-          message: deferredMessage.promise,
+          body: deferredBody.promise,
           duration: deferredDuration
         });
 
         setTimeout(function() {
           deferredTitle.resolve('Deferred Title');
-          deferredMessage.resolve('Deferred Message');
+          deferredBody.resolve('Deferred Body');
         }, 100);
 
         setTimeout(function() {
           deferredDuration.resolve();
         }, 1000);
+      });
+
+      $('#global').click(function() {
+        $('.notifications').notifications('add', {
+          title: 'Lintel Notifications',
+          body: 'Browser Test',
+          global: true
+        });
       });
     </script>
 
