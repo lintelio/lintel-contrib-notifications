@@ -1,8 +1,17 @@
 // Please try to maintain the same code style as outlined here:
 // https://github.com/lintelio/lintel/blob/master/CONTRIBUTING.md
 
-@mixin make-bacon($bg, $border, $text) {
-  background-color: $bg;
-  border-color: $border;
-  color: $text;
+@mixin make-notification($bg, $border, $text, $text-shadow: null) {
+  @if ($bg != $notification-bg) {
+    background-color: $bg;
+  }
+  @if ($border != $notification-border) {
+    border-color: $border;
+  }
+  @if ($text != $notification-text) {
+    color: $text;
+  }
+  @if ($text-shadow) {
+    text-shadow: $text-shadow;
+  }
 }

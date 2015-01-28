@@ -5,47 +5,135 @@
 @import 'notifications-functions';
 @import 'notifications-mixins';
 
+// Notifications
+// -------------
+.notifications {
+  max-height: calc(100vh - #{$cushion-base});
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: fixed;
+  top: $cushion-base;
+  right: 0;
+  z-index: $notification-z-index;
+}
+
 
 // Base
 // ----
-.bacon {
-  background-color: $bacon-base-bg;
-  border: 1px solid $bacon-base-border;
-  border-radius: $bacon-border-radius;
-  color: $bacon-base-text;
-  padding: $bacon-padding-y $bacon-padding-x;
-  margin-bottom: $bacon-margin-y;
+.notification {
+  background-color: $notification-bg;
+  border: 1px solid $notification-border;
+  border-radius: $notification-border-radius;
+  color: $notification-text;
+  cursor: pointer;
+  font-size: $notification-font-size;
+  padding: $notification-padding-y ($notification-padding-x * 2) $notification-padding-y $notification-padding-x;
+  position: relative;
+  margin-bottom: $notification-margin-y;
+  margin-right: $cushion-base;
+  width: $notification-width;
+}
+
+.notification-title,
+.notification-message {
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.notification-title {
+  font-size: $notification-title-font-size;
+  margin: 0 0 $notification-title-margin-y;
+}
+
+.notification-message {
+  margin: 0;
+}
+
+.notification-close {
+  background: none;
+  border: 0;
+  font-size: $notification-close-font-size;
+  line-height: 1;
+  padding: 0;
+  position: absolute;
+  right: $notification-close-padding-y;
+  top: $notification-close-padding-y;
+  text-align: right;
+}
+
+
+// Responsive
+// ----------
+@media screen and (max-width: $screen-sm-max) {
+  .notifications {
+    left: $cushion-base;
+  }
+
+  .notification {
+    width: auto;
+  }
 }
 
 
 // States
 // ------
 // Primary
-.bacon-primary {
-  @include make-bacon($bg: $bacon-primary-bg, $border: $bacon-primary-border, $text: $bacon-primary-text);
+.notification-primary {
+  @include make-notification(
+    $bg: $notification-primary-bg,
+    $border: $notification-primary-border,
+    $text: $notification-primary-text,
+    $text-shadow: $notification-text-shadow
+  );
 }
 
 // Secondary
-.bacon-secondary {
-  @include make-bacon($bg: $bacon-secondary-bg, $border: $bacon-secondary-border, $text: $bacon-secondary-text);
+.notification-secondary {
+  @include make-notification(
+    $bg: $notification-secondary-bg,
+    $border: $notification-secondary-border,
+    $text: $notification-secondary-text,
+    $text-shadow: $notification-text-shadow
+  );
 }
 
 // Error
-.bacon-error {
-  @include make-bacon($bg: $bacon-error-bg, $border: $bacon-error-border, $text: $bacon-error-text);
+.notification-error {
+  @include make-notification(
+    $bg: $notification-error-bg,
+    $border: $notification-error-border,
+    $text: $notification-error-text,
+    $text-shadow: $notification-text-shadow
+  );
 }
 
 // Warning
-.bacon-warning {
-  @include make-bacon($bg: $bacon-warning-bg, $border: $bacon-warning-border, $text: $bacon-warning-text);
+.notification-warning {
+  @include make-notification(
+    $bg: $notification-warning-bg,
+    $border: $notification-warning-border,
+    $text: $notification-warning-text,
+    $text-shadow: $notification-text-shadow
+  );
 }
 
 // Success
-.bacon-success {
-  @include make-bacon($bg: $bacon-success-bg, $border: $bacon-success-border, $text: $bacon-success-text);
+.notification-success {
+  @include make-notification(
+    $bg: $notification-success-bg,
+    $border: $notification-success-border,
+    $text: $notification-success-text,
+    $text-shadow: $notification-text-shadow
+  );
 }
 
 // Info
-.bacon-info {
-  @include make-bacon($bg: $bacon-info-bg, $border: $bacon-info-border, $text: $bacon-info-text);
+.notification-info {
+  @include make-notification(
+    $bg: $notification-info-bg,
+    $border: $notification-info-border,
+    $text: $notification-info-text,
+    $text-shadow: $notification-text-shadow
+  );
 }
