@@ -1,5 +1,5 @@
 lintel-contrib-notifications
-=====================
+============================
 
 > Notifications for lintel.
 
@@ -34,53 +34,132 @@ You can use [wiredep](https://github.com/taptapship/wiredep) or [grunt-wiredep](
 ## Variables
 Check the vars file in the `sass` folder to see the full list of variables you can customize.
 
-#### $bacon-bg
-Default value: `#4b77be`  
+#### $notification-padding-y
+Default value: `$cushion-y-md`  
 
-Change the bacon background.
+#### $notification-padding-x
+Default value: `$cushion-x-md`  
 
-#### $bacon-border
-Default value: `#f00`  
+#### $notification-bg
+Default value: `transparentize($bg-light, 0.1)`  
 
-Change the bacon border color.
+#### $notification-border
+Default value: `transparentize($border-base, 0.1)`  
 
-#### $bacon-text
+#### $notification-border-radius
+Default value: `$border-radius-base`  
+
+#### $notification-text
+Default value: `$text-base`  
+
+#### $notification-width
+Default value: `280px`  
+
+#### $notification-title-font-size
+Default value: `$notification-title-font-size`  
+
+#### $notification-title-margin-y
+Default value: `0.33em`  
+
+#### $notification-close-font-size
+Default value: `15px`  
+
+#### $notification-close-padding-y
+Default value: `$notification-padding-y`  
+
+#### $notification-close-padding-x
+Default value: `$notification-padding-x`  
+
+#### $notification-*-bg
+Default value: `transparentize($state-*, 0.2)`  
+
+#### $notification-*-border
+Default value: `transparentize($state-*, 0.2)`  
+
+#### $notification-*-text
 Default value: `#fff`  
 
-Change the bacon text color.
+#### $notification-*-text-shadow
+Default value: `$notification-states-shadow`  
 
 
 ## Mixins
 Check the mixins file in the `sass` folder to see how you can extend this module.
 
-#### make-bacon($bg, $border, $text)
-Default $bg: `$bacon-bg`  
-Default $border: `$bacon-border`  
-Default $text: `$bacon-text`  
-
-Sets the background, border, and text color of an element.
+#### notification-state($bg, $border, $text, $text-shadow)
+Creates notification states.
 
 ```scss
-.bacon-primary {
-  @include make-bacon(#fff, #f00, #000);
+.notification-primary {
+  @include notification-state(
+    $bg: $notification-primary-bg,
+    $border: $notification-primary-border,
+    $text: $notification-primary-text,
+    $text-shadow: $notification-primary-text-shadow
+  );
 }
+```
+
+
+## JavaScript
+
+### Options
+
+Name      | Type                           | Default             | Description
+--------- | ------------------------------ | ------------------- | -----------
+global    | boolean                        | false               | Display browser notification if available. Falls back to html notification if browser does not support notifications.
+state     | string                         |                     | Notification type.
+duration  | number / $.Deferred            | 5000 (ms)           | Determines when to remove html notification. If jQuery deferred, notification closes when resolved.
+template  | string                         | see js file         | Notification template.
+
+
+### Methods
+
+Name      | Parameters  | Description
+--------- | ----------  | -----------
+add       | (options)   | Adds notification.
+
+
+### Events
+
+Event                  | Description
+---------------------- | ------------------------------
+show.lt.notification   | Fires immediately before notification is shown. Can prevent notification from showing here. Target notification can be accessed under `relatedTarget`.
+shown.lt.notification  | Fires immediately after notification is shown.
+close.lt.notification  | Fires immediately before notification is closed. Can prevent notification from hiding here.
+closed.lt.notification | Fires immediately after notification is closed.
+
+
+### jQuery
+Call the jQuery plugin on the notifications container, passing in any options.
+
+```js
+$('#myBtn').click(function() {
+  $('.notifications').notifications('add', {
+    title: 'Success Notification',
+    body: 'Congrats!',
+    state: 'success'
+  });
+});
 ```
 
 
 ## Examples
 
-#### Bacon
+#### HTML
 ```html
-<div class="bacon">
-  Hello world!
+<div class="notifications">
+  <article class="notification" data-toggle="notification-close">
+    <h1 class="notification-title">Default Notification</h1>
+    <p class="notification-message">Calculon is gonna kill us and it's all everybody else's fault! No, just a regular mistake.</p>
+    <button type="button" class="notification-close" data-toggle="notification-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  </article>
 </div>
 ```
 
-#### Primary Bacon
+#### Primary Notification
 ```html
-<div class="bacon bacon-primary">
-  Hello world!
-</div>
+<article class="notification notification-primary">...</article>
 ```
 
 
