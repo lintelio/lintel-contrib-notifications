@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../../bower_components/lintel/dist/lintel.css">
+    <link rel="stylesheet" href="../../dist/notifications.css">
+    <script src="../../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../../dist/notifications.js"></script>
+  </head>
+  <body class="pad">
+
+    <button type="button" id="simple">Simple</button>
+
+    <button type="button" id="deferred">Deferred</button>
+
+    <div class="notifications"></div>
+
+    <script>
+      $('#simple').click(function() {
+        $('.notifications').notifications('add', {
+          title: 'Title',
+          message: 'Whatever'
+        });
+      });
+
+      $('#deferred').click(function() {
+        var deferredTitle = $.Deferred();
+        var deferredMessage = $.Deferred();
+        var deferredDuration = $.Deferred();
+
+        $('.notifications').notifications('add', {
+          title: deferredTitle.promise,
+          message: deferredMessage.promise,
+          duration: deferredDuration
+        });
+
+        setTimeout(function() {
+          deferredTitle.resolve('Deferred Title');
+          deferredMessage.resolve('Deferred Message');
+        }, 100);
+
+        setTimeout(function() {
+          deferredDuration.resolve();
+        }, 1000);
+      });
+    </script>
+
+  </body>
+</html>

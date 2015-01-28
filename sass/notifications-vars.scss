@@ -7,8 +7,8 @@ $notification-padding-x:         $cushion-x-md !default;
 
 $notification-margin-y:          $cushion-y-lg !default;
 
-$notification-bg:                $bg-light !default;
-$notification-border:            $border-base !default;
+$notification-bg:                transparentize($bg-light, 0.1) !default;
+$notification-border:            transparentize($border-base, 0.1) !default;
 $notification-border-radius:     $border-radius-base !default;
 $notification-font-size:         0.9em;
 $notification-text:              $text-base !default;
