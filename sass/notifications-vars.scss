@@ -10,20 +10,20 @@ $notification-margin-y:          $cushion-y-lg !default;
 $notification-bg:                transparentize($bg-light, 0.1) !default;
 $notification-border:            transparentize($border-base, 0.1) !default;
 $notification-border-radius:     $border-radius-base !default;
-$notification-font-size:         0.9em;
+$notification-font-size:         0.9em !default;
 $notification-text:              $text-base !default;
-$notification-text-shadow:       0 1px 1px rgba(0,0,0,.2);
-$notification-width:             280px;
-$notification-z-index:           $z-index-3xl;
+$notification-text-shadow:       0 1px 1px rgba(0,0,0,.2) !default;
+$notification-width:             280px !default;
+$notification-z-index:           $z-index-3xl !default;
 
 // Title
-$notification-title-font-size:   1em;
-$notification-title-margin-y:    0.33em;
+$notification-title-font-size:   1em !default;
+$notification-title-margin-y:    0.33em !default;
 
 // Close
-$notification-close-font-size:   15px;
-$notification-close-padding-y:   $notification-padding-y;
-$notification-close-padding-x:   $notification-padding-x;
+$notification-close-font-size:   15px !default;
+$notification-close-padding-y:   $notification-padding-y !default;
+$notification-close-padding-x:   $notification-padding-x !default;
 
 // Primary
 $notification-primary-bg:        transparentize($state-primary, 0.2) !default;
